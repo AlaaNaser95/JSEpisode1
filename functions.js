@@ -81,7 +81,7 @@ function squareOrDouble(n) {
  */
 function ageFromCivilID(civilID) {
   // Your code here
-  let century = civilID[0] + 17;
+  let century = +civilID[0] + 17;
   let year = civilID.slice(1, 3);
   let bYear = century + year;
   let month = civilID.slice(3, 5);
@@ -89,11 +89,9 @@ function ageFromCivilID(civilID) {
   let today = new Date();
 
   let age = today.getFullYear() - bYear;
+  let dob = new Date(`${month}/${day}/${bYear}`);
 
-  if (
-    today.getMonth() < month ||
-    (today.getMonth() === month && today.getDate() < day)
-  ) {
+  if (today.getMonth() < dob.getMonth()) {
     return age--;
   }
   return age;
@@ -112,6 +110,7 @@ function ageFromCivilID(civilID) {
  */
 function canVoteInKuwait(civilID, isKuwaiti, isRoyal) {
   // Your code here
+  return isKuwaiti && !isRoyal && ageFromCivilID(civilID) > 20;
 }
 
 module.exports = {
