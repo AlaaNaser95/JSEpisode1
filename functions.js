@@ -90,9 +90,8 @@ function ageFromCivilID(civilID) {
 
   let age = today.getFullYear() - bYear;
   let dob = new Date(`${month}/${day}/${bYear}`);
-
   if (today.getMonth() < dob.getMonth()) {
-    return age--;
+    age--;
   }
   return age;
 }
