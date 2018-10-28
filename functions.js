@@ -6,6 +6,11 @@
  */
 function greet(name) {
   // Your code here
+  if (name) {
+    console.log(`Hello ${name}`);
+  } else {
+    console.log("Hello");
+  }
 }
 
 /**
@@ -15,6 +20,11 @@ function greet(name) {
  */
 function isOdd(n) {
   // Your code here
+  if (n % 2) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 /**
@@ -30,6 +40,7 @@ function isOdd(n) {
  */
 function oddsSmallerThan(n) {
   // Your code here
+  return Math.floor(n / 2);
 }
 
 /**
@@ -44,6 +55,11 @@ function oddsSmallerThan(n) {
  */
 function squareOrDouble(n) {
   // Your code here
+  if (n % 2) {
+    return Math.pow(n, 2);
+  } else {
+    return n * 2;
+  }
 }
 
 /**
@@ -65,6 +81,22 @@ function squareOrDouble(n) {
  */
 function ageFromCivilID(civilID) {
   // Your code here
+  let century = civilID[0] + 17;
+  let year = civilID.slice(1, 3);
+  let bYear = century + year;
+  let month = civilID.slice(3, 5);
+  let day = civilID.slice(5, 7);
+  let today = new Date();
+
+  let age = today.getFullYear() - bYear;
+
+  if (
+    today.getMonth() < month ||
+    (today.getMonth() === month && today.getDate() < day)
+  ) {
+    return age--;
+  }
+  return age;
 }
 
 /**
